@@ -1,0 +1,51 @@
+
+
+.task_container {
+  display: flex;
+  justify-content: space-between;
+}
+.todolist_item {
+  width: 100%;
+  height: 46px;
+  padding: 12px 20px 12px 20px;
+  background-color: #ffffff;
+  border-radius: 9999px;
+  display: flex;
+  justify-content: space-between;
+  margin-top: 16px;
+}
+.todolist_item .todolist_input input {
+  padding: 12px 20px 12px 20px;
+  background-color: #ffffff;
+  border: none;
+  margin: 0;
+  padding: 0;
+}
+.todolist_button {
+  color: #fff;
+  position: relative;
+  bottom: 7px;
+  left: 7px;
+  width: 65px;
+  height: 35px;
+  border-radius: 999px;
+  background-color: #585292;
+  border: none;
+}
+.option_modal {
+  position: relative;
+  padding-top : 17px;
+  padding-left: 22px;
+  width: 110px;
+  height: 81px;
+  background: #ffffff;
+  box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
+  right: 100px;
+  z-index: 9999 !important;
+}
+.inputEdit_todo{
+  z-index: 9999 !important;
+  display: flex;
+  justify-content: space-between;
+}
