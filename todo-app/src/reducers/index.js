@@ -1,8 +1,10 @@
 import { combineReducers } from 'redux';
-import exampleReducer from './exampleReducer';
+import todo from './todoReducer';
+import status from './fetchReducer';
 
 const rootReducer = combineReducers({
-    example: exampleReducer
+    todo,
+    status,
 })
 
 export default rootReducer
