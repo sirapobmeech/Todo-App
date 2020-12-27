@@ -4,7 +4,7 @@ import './progressBar.css'
 const ProgressBar = ({sortTodo}) => {
     let  total = 0;
     let complete = 0;
-   sortTodo.data && sortTodo.data.map((elem) => {
+   sortTodo.data && sortTodo.data.forEach((elem) => {
         total++
         if(elem.completed){
             complete++

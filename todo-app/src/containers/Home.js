@@ -18,7 +18,8 @@ function Home() {
 
     // use effect
     useEffect(() => {
-        dispatch(getTodo()) // เรียกใช้งาน Action เพื่อสร้าง api request เมื่อ Component ทำการ mounted เรียบร้อยแล้ว
+        dispatch(getTodo())
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
     useEffect(() => {
         if (todoStore.data && !todoStore.error && !todoStore.pending) {
@@ -31,9 +32,11 @@ function Home() {
         else if (todoStore.error) {
             alert("ไม่สามารถดาวน์โหลดข้อมูลได้ โปรดลองใหม่อีกครั้งภายหลัง")
         }
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [todoStore]);
     useEffect(() => {
         filterFunction(type)
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [todo])
 
     // method

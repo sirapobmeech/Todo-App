@@ -60,7 +60,8 @@ select:focus {
   opacity: 0;
 }
 .content {
-  display: block;
+  display: flex;
+  justify-content: center;
   position: relative;
   padding-left: 35px;
   margin-bottom: 12px;
