@@ -65,7 +65,8 @@ function Home() {
     const _handleKeyDown = (e) => {
         if (e.key === 'Enter') {
             dispatch(addTodo(title))
-        }
+            setTitle('')
+        }   
     }
     const onDelete = (id) => {
         dispatch(deleteTodo(id))
