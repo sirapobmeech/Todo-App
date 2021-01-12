@@ -1,19 +1,26 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './taskLayOut.css';
+import { useSelector, useDispatch } from 'react-redux';
 import threeDots from '../assets/images/more.png';
-const TodolistItem = ({ elem, option, setOption, index, onDelete, setBackDrop,
-    closeAllTap, titleEdit, setTitleEdit, onSave, changeTodo }) => {
+import { deleteTodo, saveTodo, changeStatusTodo } from '../actions/todoActions';
+import { changeOption } from '../actions/optionActions';
+import { changeBackdrop } from '../actions/backdropAction'
+const TodolistItem = ({ elem, index, closeAllTap }) => {
+    const dispatch = useDispatch();
+    const option = useSelector(state => state.option);
+    const [titleEdit, setTitleEdit] = useState('')
+
     const threeDotClick = () => {
-        setBackDrop(true)
-        setOption([...option, option[index].menu = true])
+        dispatch(changeBackdrop(true))
+        dispatch(changeOption([...option, option[index].menu = true]))
     }
     const editButtonClick = () => {
         closeAllTap()
         setTitleEdit(elem.title)
-        setOption([...option, option[index].menu = false, option[index].edit = true])
+        dispatch(changeOption([...option, option[index].menu = false, option[index].edit = true]))
     }
     const onChange = (status, id) => {
-        changeTodo(!status, id)
+        dispatch(changeStatusTodo(!status, id))
     }
     return (
         <div className="todolist_item">
@@ -31,14 +38,14 @@ const TodolistItem = ({ elem, option, setOption, index, onDelete, setBackDrop,
             <div>
                 {option[index] && !option[index].edit && <img onClick={() => threeDotClick()} style={{ width: 20, minHeight: 5, cursor: "pointer" }} src={threeDots} alt="menu" />}
                 {option[index] && option[index].edit && <div>
-                    <button onClick={() => onSave(titleEdit, elem.id)} className="todolist_button">SAVE</button>
+                    <button onClick={() => dispatch(saveTodo(titleEdit, elem.id))} className="todolist_button">SAVE</button>
                 </div>}
                 {option[index] && option[index].menu && !option[index].edit && <div style={{ width: 1, height: 1, textAlign: "left", zIndex: 999 }}>
                     <div className="option_modal">
                         <div onClick={() => editButtonClick()} className="content_topic edit_button">
                             Edit
                         </div><br />
-                        <div onClick={() => onDelete(elem.id)} className="content_topic delete_button">
+                        <div onClick={() => dispatch(deleteTodo(elem.id))} className="content_topic delete_button">
                             Delete
                         </div>
                     </div>

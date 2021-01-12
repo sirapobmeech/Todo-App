@@ -1,8 +1,17 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './taskLayOut.css';
+import { useDispatch } from 'react-redux'
+import { addTodo } from '../actions/todoActions'
 import TodoListItem from './todolistItem'
-const Task = ({ todo, onEnter, title, setTitle, option, setOption, onDelete, 
-                setBackDrop, closeAllTap, titleEdit, setTitleEdit, onSave, changeTodo, filterFunction }) => {
+const Task = ({ todo, closeAllTap, filterFunction }) => {
+    const [title, setTitle] = useState([]);
+    const dispatch = useDispatch()
+    const _handleKeyDown = (e) => {
+        if (e.key === 'Enter') {
+            dispatch(addTodo(title))
+            setTitle('')
+        }
+    }
     return (
         <div>
             <div className="task_container">
@@ -22,15 +31,8 @@ const Task = ({ todo, onEnter, title, setTitle, option, setOption, onDelete,
                     return (
                         <div key={index}>
                             <TodoListItem
-                                changeTodo={changeTodo}
-                                onSave={onSave} titleEdit={titleEdit}
-                                setTitleEdit={setTitleEdit}
                                 closeAllTap={closeAllTap}
-                                setBackDrop={setBackDrop}
-                                onDelete={onDelete}
                                 index={index}
-                                option={option}
-                                setOption={setOption}
                                 elem={elem} />
                         </div>
                     )
@@ -43,7 +45,7 @@ const Task = ({ todo, onEnter, title, setTitle, option, setOption, onDelete,
                         className="content_topic add_todo"
                         onChange={(e) => setTitle(e.target.value)}
                         value={title}
-                        onKeyDown={(e) => onEnter(e)}
+                        onKeyDown={(e) => _handleKeyDown(e)}
                         placeholder="Add your todo..."
                     />
                 </div>
