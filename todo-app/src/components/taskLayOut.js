@@ -1,7 +1,8 @@
 import React from 'react';
 import './taskLayOut.css';
 import TodoListItem from './todolistItem'
-const Task = ({ todo, onEnter, title, setTitle, option, setOption, onDelete, setBackDrop, closeAllTap,titleEdit,setTitleEdit,onSave,changeTodo, filterFunction }) => {
+const Task = ({ todo, onEnter, title, setTitle, option, setOption, onDelete, 
+                setBackDrop, closeAllTap, titleEdit, setTitleEdit, onSave, changeTodo, filterFunction }) => {
     return (
         <div>
             <div className="task_container">
@@ -20,16 +21,16 @@ const Task = ({ todo, onEnter, title, setTitle, option, setOption, onDelete, set
                 {todo.data.map((elem, index) => {
                     return (
                         <div key={index}>
-                            <TodoListItem 
-                                changeTodo={changeTodo} 
-                                onSave={onSave} titleEdit={titleEdit} 
-                                setTitleEdit={setTitleEdit}  
-                                closeAllTap={closeAllTap} 
-                                setBackDrop={setBackDrop} 
-                                onDelete={onDelete} 
-                                index={index} 
-                                option={option} 
-                                setOption={setOption} 
+                            <TodoListItem
+                                changeTodo={changeTodo}
+                                onSave={onSave} titleEdit={titleEdit}
+                                setTitleEdit={setTitleEdit}
+                                closeAllTap={closeAllTap}
+                                setBackDrop={setBackDrop}
+                                onDelete={onDelete}
+                                index={index}
+                                option={option}
+                                setOption={setOption}
                                 elem={elem} />
                         </div>
                     )
@@ -38,7 +39,13 @@ const Task = ({ todo, onEnter, title, setTitle, option, setOption, onDelete, set
 
             <div className="todolist_item">
                 <div className="todolist_input">
-                    <input onChange={(e) => setTitle(e.target.value)} value={title} onKeyDown={(e) => onEnter(e)} placeholder="Add your todo..." style={{ marginLeft: 16,width :"100%" }} className="content_topic" />
+                    <input
+                        className="content_topic add_todo"
+                        onChange={(e) => setTitle(e.target.value)}
+                        value={title}
+                        onKeyDown={(e) => onEnter(e)}
+                        placeholder="Add your todo..."
+                    />
                 </div>
             </div>
 

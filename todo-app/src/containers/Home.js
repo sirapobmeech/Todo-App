@@ -4,7 +4,7 @@ import ProgressBar from '../components/progressBar';
 import Task from '../components/taskLayOut';
 import { getTodo, addTodo, deleteTodo, saveTodo, changeStatusTodo } from '../actions/todoActions'
 
-function Home() {
+const Home = () => {
     const dispatch = useDispatch()
     let todoStore = useSelector(state => state.todo)
 
