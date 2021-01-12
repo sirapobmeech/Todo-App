@@ -100,6 +100,8 @@ select:focus {
   height: 22px;
   width: 22px;
   background-color: #eee;
+  border: 2px solid #585292;
+  border-radius: 6px;
 }
 
 /* On mouse-over, add a grey background color */
@@ -126,8 +128,8 @@ select:focus {
 
 /* Style the checkmark/indicator */
 .content .checkmark:after {
-  left: 9px;
-  top: 5px;
+  left: 7px;
+  top: 3px;
   width: 6px;
   height: 10px;
   border: solid white;
